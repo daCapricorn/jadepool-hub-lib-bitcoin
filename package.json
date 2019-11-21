@@ -1,6 +1,6 @@
 {
   "name": "@jadepool/lib-bitcoin",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Bitcoin Transaction Builder for NodeJS - Jadepool",
   "main": "index.js",
   "files": [

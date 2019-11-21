@@ -46,10 +46,15 @@ type TransferInfo = {
   omni?: OmniTransferInfo
 }
 
-type UnsignedResult = {
+type UnsignedInput = {
   vin: number
   address: string
   unsignedHash: string
+}
+
+type UnsignedResult = {
+  inputs: UnsignedInput[]
+  rawtx: string
 }
 
 /**
@@ -57,7 +62,7 @@ type UnsignedResult = {
  * @param info transfer info
  * @returns unsigned tx hash
  */
-export function composeUnsignedTransferTx(info: TransferInfo, isTestnet?: boolean): UnsignedResult[];
+export function composeUnsignedTransferTx(info: TransferInfo, isTestnet?: boolean): UnsignedResult;
 
 type InputSignature = {
   vin: number

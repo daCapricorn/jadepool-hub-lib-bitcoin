@@ -46,7 +46,7 @@ npm install @jadepool/lib-bitcoin
     }
   }
   // return unsignedInputs
-  const [{ vin, address, unsignedHash }] = lib.composeUnsignedTransferTx(transferInfo, true)
+  const { inputs/* [{ vin, address, unsignedHash }] */, rawtx } = lib.composeUnsignedTransferTx(transferInfo, true)
   // buildTransferTx
   const sigs = [
     {

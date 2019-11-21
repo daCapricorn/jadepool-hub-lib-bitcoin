@@ -132,7 +132,7 @@ const lib = {
   composeUnsignedTransferTx (transferInfo, isTestnet = false) {
     const tx = buildTransaction(transferInfo, isTestnet)
     const hashType = bitcoin.Transaction.SIGHASH_ALL
-    return transferInfo.inputs.map((input, vin) => {
+    const inputs = transferInfo.inputs.map((input, vin) => {
       // 设置未签名hash
       const script = Buffer.from(input.scriptPubKey, 'hex')
       const signatureHash = tx.hashForSignature(vin, script, hashType)
@@ -142,6 +142,10 @@ const lib = {
         unsignedHash: signatureHash.toString('hex')
       }
     })
+    return {
+      inputs,
+      rawtx: tx.toHex()
+    }
   },
   /**
    * @param {object} transferInfo
