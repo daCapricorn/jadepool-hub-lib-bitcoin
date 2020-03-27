@@ -52,18 +52,18 @@ function buildTransaction (info, isTestnet = false) {
   assert(info && info.inputs && info.outputs, 'inputs and outputs should be existed.')
   // ensure inputs and outputs
   info.inputs.forEach((input, i) => {
-    assert(lib.validateAddress(input.address), `input[${i}] address invalid.`)
+    assert(lib.validateAddress(input.address, isTestnet), `input[${i}] address invalid.`)
     ensureType(input.scriptPubKey, 'string', `input[${i}] scriptPubKey should be string`)
     ensureType(input.txid, 'string', `input[${i}] txid should be string`)
     ensureType(input.vout, 'number', `input[${i}] vout should be number`)
   })
   info.outputs.forEach((output, i) => {
-    assert(lib.validateAddress(output.address), `input[${i}] address invalid.`)
+    assert(lib.validateAddress(output.address, isTestnet), `input[${i}] address invalid.`)
     ensureType(parseInt(output.satoshi), 'number', `input[${i}] satoshi should be a string of number.`)
   })
   if (typeof info.omni === 'object') {
-    assert(lib.validateAddress(info.omni.from), 'omni.from invalid')
-    assert(lib.validateAddress(info.omni.to), 'omni.to invalid')
+    assert(lib.validateAddress(info.omni.from, isTestnet), 'omni.from invalid')
+    assert(lib.validateAddress(info.omni.to, isTestnet), 'omni.to invalid')
     ensureType(info.omni.value, 'number', `omni.value should be a string of number.`)
   }
 
