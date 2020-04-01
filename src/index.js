@@ -160,7 +160,7 @@ const lib = {
     const hashType = bitcoin.Transaction.SIGHASH_ALL
     const network = getNetwork(isTestnet)
     for (const sig of sigs) {
-      assert(sig.signature.length === 64, 'Invalid signature length.')
+      assert(sig.signature.length === 64 * 2, 'Invalid signature length.')
       const sigBuf = Buffer.from(sig.signature, 'hex')
       ensureType(sig.pubKey, 'string', 'Public key should be string.')
       const pubKey = Buffer.from(sig.pubKey, 'hex')
